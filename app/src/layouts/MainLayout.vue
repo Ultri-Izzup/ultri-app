@@ -1,7 +1,8 @@
+
 <template>
   <q-layout view="hHh lpR fFf">
 
-    <q-header bordered class="bg-primary text-white">
+    <q-header reveal bordered class="bg-primary text-white">
       <q-toolbar>
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
 
@@ -16,11 +17,11 @@
       </q-toolbar>
     </q-header>
 
-    <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
+    <q-drawer v-model="leftDrawerOpen" side="left" overlay bordered>
       <!-- drawer content -->
     </q-drawer>
 
-    <q-drawer show-if-above v-model="rightDrawerOpen" side="right" bordered>
+    <q-drawer v-model="rightDrawerOpen" side="right" overlay>
       <!-- drawer content -->
     </q-drawer>
 
@@ -28,7 +29,7 @@
       <router-view />
     </q-page-container>
 
-    <q-footer class="bg-grey-8 text-white">
+    <q-footer reveal class="bg-grey-8 text-white">
       <q-toolbar>
         <q-toolbar-title>
           <q-avatar>
