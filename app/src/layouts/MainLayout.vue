@@ -1,67 +1,60 @@
-
 <template>
   <q-layout view="hHh lpR fFf">
-
     <q-header reveal bordered class="bg-primary text-white">
       <q-toolbar>
-        <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
+        <!-- <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" /> -->
 
         <q-toolbar-title>
-          <q-avatar>
+          <!-- <q-avatar>
             <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
-          </q-avatar>
-          Title
+          </q-avatar> -->
+          <span class="text-h4 text-italic text-weight-bold">{{
+            $t("site.name")
+          }}</span>
         </q-toolbar-title>
 
         <q-btn dense flat round icon="menu" @click="toggleRightDrawer" />
       </q-toolbar>
     </q-header>
 
-    <q-drawer v-model="leftDrawerOpen" side="left" overlay bordered>
-      <!-- drawer content -->
-    </q-drawer>
+    <!-- <q-drawer v-model="leftDrawerOpen" side="left" overlay bordered>
 
-    <q-drawer v-model="rightDrawerOpen" side="right" overlay>
+    </q-drawer> -->
+
+    <q-drawer v-model="rightDrawerOpen" side="right" overlay bordered>
       <!-- drawer content -->
     </q-drawer>
 
     <q-page-container>
+      Loading: {{isLoading}}
       <router-view />
     </q-page-container>
 
-    <q-footer reveal class="bg-grey-8 text-white">
-      <q-toolbar>
-        <q-toolbar-title>
-          <q-avatar>
-            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
-          </q-avatar>
-          <div>Title</div>
-        </q-toolbar-title>
-      </q-toolbar>
-    </q-footer>
-
+    <page-footer></page-footer>
   </q-layout>
 </template>
 
-<script>
-import { ref } from 'vue'
+<script setup>
+import { ref } from 'vue';
+import { storeToRefs } from 'pinia';
 
-export default {
-  setup () {
-    const leftDrawerOpen = ref(false)
-    const rightDrawerOpen = ref(false)
+import PageFooter from "../components/page/PageFooter.vue";
 
-    return {
-      leftDrawerOpen,
-      toggleLeftDrawer () {
-        leftDrawerOpen.value = !leftDrawerOpen.value
-      },
+import { useUIStore } from "../stores/ui";
 
-      rightDrawerOpen,
-      toggleRightDrawer () {
-        rightDrawerOpen.value = !rightDrawerOpen.value
-      }
-    }
-  }
+const uiStore = useUIStore();
+
+const { isLoading } = storeToRefs(uiStore);
+
+const leftDrawerOpen = ref(false);
+const rightDrawerOpen = ref(false);
+
+const toggleLeftDrawer = () => {
+  leftDrawerOpen.value = !leftDrawerOpen.value;
 }
+
+const toggleRightDrawer = () => {
+  rightDrawerOpen.value = !rightDrawerOpen.value;
+}
+
 </script>
