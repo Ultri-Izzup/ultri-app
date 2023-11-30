@@ -26,7 +26,6 @@
     </q-drawer>
 
     <q-page-container>
-      Loading: {{isLoading}}
       <router-view />
     </q-page-container>
 
@@ -35,16 +34,32 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { storeToRefs } from 'pinia';
+
+import { useQuasar } from 'quasar'
 
 import PageFooter from "../components/page/PageFooter.vue";
 
 import { useUIStore } from "../stores/ui";
 
-const uiStore = useUIStore();
+const $q = useQuasar()
 
+const uiStore = useUIStore();
 const { isLoading } = storeToRefs(uiStore);
+
+watch(isLoading, (newVal, oldVal) => {
+  if(newVal) {
+    $q.loading.show({
+      delay: 400 // ms
+    })
+  } else {
+    $q.loading.hide()
+  }
+}, {immediate: true})
+
+
+
 
 const leftDrawerOpen = ref(false);
 const rightDrawerOpen = ref(false);
