@@ -1,5 +1,6 @@
 
 const routes = [
+  // HOME
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
@@ -8,6 +9,7 @@ const routes = [
     ]
   },
 
+  // POLICY PAGE
   {
     path: '/legal/:policy',
     component: () => import('layouts/MainLayout.vue'),
@@ -16,8 +18,8 @@ const routes = [
     ]
   },
 
-  // Always leave this as last one,
-  // but you can also remove it
+  // CATCHALL
+  // Always leave this as last one
   {
     path: '/:catchAll(.*)*',
     component: () => import('pages/ErrorNotFound.vue')
