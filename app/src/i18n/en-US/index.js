@@ -1,7 +1,19 @@
-// This is just an example,
-// so you can safely delete all default props below
-
 export default {
-  failed: 'Action failed',
-  success: 'Action was successful'
+  footer: {
+    about: {
+      label: "About"
+    },
+    policy: {
+      label: "Legal"
+    },
+  },
+  site: {
+    copyright: {
+      holder: {
+        short: "Ultri",
+        long: "Brian Winkers dba Ultri"
+      }
+    },
+    name: "Ultri",
+  }
 }
