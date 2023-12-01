@@ -27,6 +27,15 @@ const routes = [
     ]
   },
 
+  // FEDIVERSE DASHBOARD
+  {
+    path: '/fediverse',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', name: "fediverseDashboard", component: () => import('pages/FediverseDashboardPage.vue') }
+    ]
+  },
+
   // CATCHALL
   // Always leave this as last one
   {

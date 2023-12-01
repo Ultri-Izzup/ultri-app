@@ -20,6 +20,10 @@ export const useUserStore = defineStore("user", () => {
   // Boolean signifying if the vistor was shown the cookie options.
   const cookieOptionsDisplayed = useStorage("cookieOptionsDisplayed", false);
 
+  // Auth state properties
+  const authMemberUid = useStorage("authMemberUid", null);
+  const authMemberObj = useStorage("authMemberObj", {});
+
   // Policy acceptance
   const cookiePolicyAccepted = useStorage("cookiePolicyAccepted", false);
   const privacyPolicyAccepted = useStorage("privacyPolicyAccepted", false);
@@ -33,7 +37,10 @@ export const useUserStore = defineStore("user", () => {
   /**
    * GETTERS - *Computed* functions become store getters
    */
-
+  const isSignedIn = computed(() =>  {
+    return authMemberUid.value
+      && authMemberUid.value.length > 0;
+  });
 
   // Has the user granted internal tracking?
   // Internal Tracking is required to allow part in governance.
@@ -66,6 +73,8 @@ export const useUserStore = defineStore("user", () => {
    * ACTIONS - Plain functions become store actions
    */
   const $reset = () => {
+    authMemberUid.value = null;
+    authMemberObj.value = {};
     cookieOptionsDisplayed.value = false;
     cookiePolicyAccepted.value = false;
     privacyPolicyAccepted.value = false;
@@ -80,20 +89,22 @@ export const useUserStore = defineStore("user", () => {
    */
   return {
     // STATE
+    authMemberUid,
+    authMemberObj,
     cookieOptionsDisplayed,
     cookiePolicyAccepted,
-    privacyPolicyAccepted,
-    termsOfServiceAccepted,
     extTrackingAccepted,
     intTrackingAccepted,
+    privacyPolicyAccepted,
     reqCookiesAccepted,
+    termsOfServiceAccepted,
 
     // GETTERS
     isNetizen,
+    isSignedIn,
     netizenCookiesMet,
     signinCookiesMet,
     signinRequirementsMet,
-
 
     // ACTIONS
     $reset,

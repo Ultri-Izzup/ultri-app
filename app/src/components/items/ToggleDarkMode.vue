@@ -1,7 +1,7 @@
 <template>
   <q-item clickable v-ripple @click="uiStore.toggleDarkMode()">
     <q-item-section avatar>
-      <q-icon :color="darkMode ? ' grey-1 ' : ' grey-9  '" name="mdi-theme-light-dark"></q-icon>
+      <q-icon name="mdi-theme-light-dark"></q-icon>
     </q-item-section>
     <q-item-section>
       <span v-if="darkMode">Switch to light mode</span>

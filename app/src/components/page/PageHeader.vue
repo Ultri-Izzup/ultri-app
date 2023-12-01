@@ -9,7 +9,7 @@
         }}</span>
       </q-toolbar-title>
 
-      <q-btn dense flat round icon="mdi-account" @click="uiStore.toggleRightDrawer" />
+      <q-btn @click="uiStore.toggleRightDrawer" :color="uiStore.rightDrawerOpen ? 'grey-5' : ''" dense flat round icon="mdi-account" />
     </q-toolbar>
   </q-header>
 </template>

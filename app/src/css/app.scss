@@ -1,8 +1,8 @@
 // app global css in SCSS form
-.body--light {
-  /* ... */
+.body--light .drawer-text {
+  color: $grey-9;
 }
 
-.body--dark {
-  /* ... */
+.body--dark .drawer-text {
+  color: $grey-1;
 }

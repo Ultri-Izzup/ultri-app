@@ -1,4 +1,15 @@
 export default {
+  auth: {
+    signInSignUp: "Sign In / Sign Up",
+    signIn: "Sign In",
+    signOut: "Sign Out",
+    signUp: "Sign Up",
+  },
+  canava: {
+    dashboard: {
+      label: "Canava - Canvas Builder"
+    }
+  },
   cookie: {
     settings: {
       accessLevel: {
@@ -29,6 +40,12 @@ export default {
       }
     }
   },
+  fediverse: {
+    dashboard: {
+      label: "Fediverse Accounts"
+    },
+    label: "Fediverse"
+  },
   footer: {
     about: {
       label: "About"
@@ -45,5 +62,10 @@ export default {
       }
     },
     name: "Ultri",
-  }
+  },
+  workspace: {
+    dashboard: {
+      label: "Workspaces"
+    }
+  },
 }

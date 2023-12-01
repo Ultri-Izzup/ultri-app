@@ -47,11 +47,9 @@ export const useUIStore = defineStore("ui", () => {
     if(newVal) {
       $q.loading.show({
         delay: 400, // ms
-        spinner: 'grid',
-        spinnerColor: 'yellow',
-        spinnerSize: 140,
-        backgroundColor: 'purple',
-        message: 'Some important process is in progress. Hang on...',
+        spinner: QSpinnerGears,
+        backgroundColor: 'grey-3',
+        message: 'Loading great things, we appreciate your patience.',
         messageColor: 'black'
       })
     } else {
