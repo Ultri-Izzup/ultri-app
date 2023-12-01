@@ -46,7 +46,13 @@ export const useUIStore = defineStore("ui", () => {
   watch(isLoading, (newVal, oldVal) => {
     if(newVal) {
       $q.loading.show({
-        delay: 400 // ms
+        delay: 400, // ms
+        spinner: 'grid',
+        spinnerColor: 'yellow',
+        spinnerSize: 140,
+        backgroundColor: 'purple',
+        message: 'Some important process is in progress. Hang on...',
+        messageColor: 'black'
       })
     } else {
       $q.loading.hide()

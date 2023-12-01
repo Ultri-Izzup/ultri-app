@@ -9,6 +9,15 @@ const routes = [
     ]
   },
 
+  // ABOUT
+  {
+    path: '/about',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', name: "aboutPage", component: () => import('pages/AboutPage.vue') }
+    ]
+  },
+
   // POLICY PAGE
   {
     path: '/legal/:policy',
